@@ -17,7 +17,7 @@ import javax.inject.Named;
  *
  * @author tss
  */
-@Named
+@Named(value = "logout")
 @RequestScoped
 public class Logout implements Serializable {
 
@@ -28,7 +28,7 @@ public class Logout implements Serializable {
         
         security.logout();
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-        return "/index.jsf?faces-redirect-true";
+        return "/index.jsf?faces-redirect=true";
         
     }
 }

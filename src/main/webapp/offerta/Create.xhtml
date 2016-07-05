@@ -19,15 +19,18 @@
                             <f:selectItems value="#{prodottoController.itemsAvailableSelectOne}"
                                            var="id_prodottoItem"
                                            itemValue="#{id_prodottoItem}"/>
+
+
                         </p:selectOneMenu>
-                        <p:outputLabel value="#{bundle.CreateOffertaLabel_id_utente}" for="id_utente" />
-                        <p:selectOneMenu id="id_utente" value="#{offertaController.selected.id_utente}" >
-                            <f:selectItems value="#{utenteController.itemsAvailableSelectOne}"
-                                           var="id_utenteItem"
-                                           itemValue="#{id_utenteItem}"/>
-                        </p:selectOneMenu>
-                        <p:outputLabel value="#{bundle.CreateOffertaLabel_prezzo}" for="prezzo" />
-                        <p:inputText id="prezzo" value="#{offertaController.selected.prezzo}" title="#{bundle.CreateOffertaTitle_prezzo}" />
+                            <p:outputLabel value="#{bundle.CreateOffertaLabel_id_utente}" for="id_utente" />
+                          <p:selectOneMenu id="id_utente" value="#{offertaController.selected.id_utente}" >
+                                <f:selectItems value="#{utenteController.itemsAvailableSelectOne}"
+                                               var="id_utenteItem"
+                                               itemValue="#{id_utenteItem}"/>
+                            
+                          </p:selectOneMenu>
+                            <p:outputLabel value="#{bundle.CreateOffertaLabel_prezzo}" for="prezzo" />
+                            <p:inputText id="prezzo" value="#{offertaController.selected.prezzo}" title="#{bundle.CreateOffertaTitle_prezzo}" />
                     </p:panelGrid>
                     <p:commandButton actionListener="#{offertaController.create}" value="#{bundle.Save}" update="display,:OffertaListForm:datalist,:growl" oncomplete="handleSubmit(args,'OffertaCreateDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="OffertaCreateDialog.hide()"/>

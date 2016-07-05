@@ -20,26 +20,26 @@
             <p:layoutUnit position="north" size="65" header="#{bundle.AppName}">
                 <h:form id="menuForm">
                     <p:menubar>
-                        <p:menuitem value="#{bundle.Home}" outcome="/template" icon="ui-icon-home"/>
-                        <p:submenu label="#{bundle.Maintenance}">
-                            <p:menuitem value="Offerta" outcome="/offerta/List.xhtml" />
-                            <p:menuitem value="Prodotto" outcome="/prodotto/List.xhtml" />
-                            <p:menuitem value="Utente" outcome="/utente/List.xhtml" />
-                        </p:submenu>
+                        <p:menuitem value="Home" outcome="/template" icon="ui-icon-home"/>
 
-                        <p:menuitem value="Prodotti all' asta" outcome="/prodotto/List" icon="ui-icon-document" rendered="#{not empty userSession.loggedUser}" >
+                        <p:menuitem value="Aste in corso" outcome="/prodotto/List" icon="ui-icon-document" rendered="#{not empty userSession.loggedUser}" >
                             <f:param name="i" value="1" />
                         </p:menuitem>
-                        <p:menuitem value="Le tue offerte" outcome="/offerta/List" icon="ui-icon-wrench" rendered="#{not empty userSession.loggedUser}">
+                        <p:menuitem value="Offerte" outcome="/offerta/List" icon="ui-icon-wrench" rendered="#{not empty userSession.loggedUser}">
                             <f:param name="i" value="2" />
                         </p:menuitem>
+                        <p:menuitem value="I tuoi prodotti" outcome="/prodotto/List" icon="ui-icon-wrench" rendered="#{not empty userSession.loggedUser}">
+                            <f:param name="i" value="2" />
+                        </p:menuitem>
+                        
                         <p:menuitem value="Login" outcome="/login" icon="ui-icon-search" rendered="#{empty userSession.loggedUser}">
                             <f:param name="i" value="1" />
                         </p:menuitem>
                         <p:menuitem value="Registrazione" process="@this" outcome="/utente/List" actionListener="#{utenteController.prepareCreate()}" oncomplete="PF('UtenteCreateDialog').show()" icon="ui-icon-person" rendered="#{empty userSession.loggedUser}">
                             <f:param name="i" value="2" />
                         </p:menuitem>
-                         <f:facet name="options">
+
+                        <f:facet name="options">
                             <p:outputLabel 
                                 value="Utente collegato:" 
                                 style="margin-right: 10px; font-size: 50px;" 
@@ -50,12 +50,11 @@
                                 rendered="#{not empty userSession.loggedUser}" />
                         </f:facet>
 
-
+                            
                         <f:facet name="options">
-
-                            <p:commandButton value="logout" icon="ui-icon-extlink" action="#{logout.onLogout()}" rendered="#{not empty userSession.loggedUser}"/>
-
+                            <p:commandButton action="#{logout.onLogout()}" icon="ui-icon-extlink" value="Logout" rendered="#{not empty userSession.loggedUser}"/>
                         </f:facet>
+
                     </p:menubar>
                 </h:form>
             </p:layoutUnit>

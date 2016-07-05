@@ -12,8 +12,14 @@
             <h:form id="ProdottoCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{prodottoController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateProdottoLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{prodottoController.selected.id}" title="#{bundle.CreateProdottoTitle_id}" />
+                       
+                         <p:outputLabel 
+                            value="Utente" for="utente" />
+                        <p:outputLabel    
+                            id="utente"
+                            value="#{userSession.loggedUser}" 
+                            style="margin-left: 50px; font-weight: bold;"/>
+                        
                         <p:outputLabel value="#{bundle.CreateProdottoLabel_prezzo_base}" for="prezzo_base" />
                         <p:inputText id="prezzo_base" value="#{prodottoController.selected.prezzo_base}" title="#{bundle.CreateProdottoTitle_prezzo_base}" />
                         <p:outputLabel value="#{bundle.CreateProdottoLabel_nome_prodotto}" for="nome_prodotto" />
@@ -24,7 +30,8 @@
                         <p:selectOneMenu id="utente_proprietario" value="#{prodottoController.selected.utente_proprietario}" >
                             <f:selectItems value="#{utenteController.itemsAvailableSelectOne}"
                                            var="utente_proprietarioItem"
-                                           itemValue="#{utente_proprietarioItem}"/>
+                                           itemValue="#{utente_proprietarioItem}"
+                                            />
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{prodottoController.create}" value="#{bundle.Save}" update="display,:ProdottoListForm:datalist,:growl" oncomplete="handleSubmit(args,'ProdottoCreateDialog');"/>

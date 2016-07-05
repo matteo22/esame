@@ -25,7 +25,7 @@
         </dependency>
          <dependency>
             <groupId>org.primefaces.themes</groupId>
-            <artifactId>start</artifactId>
+            <artifactId>humanity</artifactId>
             <version>1.0.8</version>
         </dependency>
         <dependency>

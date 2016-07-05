@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -19,6 +20,9 @@ import javax.persistence.TemporalType;
  *
  * @author tss
  */
+
+@NamedQuery(name = "Prodotto.findByUtente",
+            query = "select e from Prodotto e where e.utente_proprietario=:utente_proprietario")
 @Entity
 public class Prodotto implements Serializable {
 
